@@ -14,7 +14,7 @@
     <Directory %docroot%>
         AllowOverride All
         Options +Includes -Indexes +ExecCGI
-        php_admin_value upload_max_filesize 10M
+        php_admin_value upload_max_filesize 64M
         php_admin_value max_execution_time 90
         php_admin_value post_max_size  64M
         php_admin_value memory_limit 1024M
