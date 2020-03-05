@@ -4,7 +4,7 @@ DIR="$1"
 
 if [ ! -d "${DIR}" ]
 then
- echo "Site dir doesnt exists!"
+ echo "Please put site web root dir in parametr"
  exit 0
 fi
 
