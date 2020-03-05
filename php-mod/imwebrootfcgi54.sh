@@ -9,8 +9,8 @@ docroot="$5"
 wrapper_script="#!/bin/sh
 PHPRC=/usr/local/lib
 export PHPRC
-export PHP_FCGI_MAX_REQUESTS=1000
-export PHP_FCGI_CHILDREN=20
+export PHP_FCGI_MAX_REQUESTS=500
+export PHP_FCGI_CHILDREN=4
 exec  /usr/bin/php54-cgi
 "
 wrapper_file="$home_dir/$user/web/$domain/cgi-bin/fcgi-starter"
