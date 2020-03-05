@@ -20,7 +20,7 @@
         <Files *.php>
           SetHandler fcgid-script
         </Files>
-        FCGIWrapper %home%/%user%/web/%domain%/cgi-bin/fcgi-starter .php
+        FCGIWrapper %home%/%user%/web/%domain%/cgi-bin/fcgi54-starter .php
     </Directory>
     <Directory %home%/%user%/web/%domain%/stats>
         AllowOverride All
