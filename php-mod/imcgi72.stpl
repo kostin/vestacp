@@ -3,7 +3,7 @@
     ServerName %domain_idn%
     %alias_string%
     ServerAdmin %email%
-    DocumentRoot %sdocroot%
+    DocumentRoot %sdocroot%/web_root
     ScriptAlias /cgi-bin/ %home%/%user%/web/%domain%/cgi-bin/
     Alias /vstats/ %home%/%user%/web/%domain%/stats/
     Alias /error/ %home%/%user%/web/%domain%/document_errors/
@@ -18,15 +18,14 @@
         php_admin_value open_basedir %sdocroot%:%home%/%user%/tmp
         php_admin_value upload_tmp_dir %home%/%user%/tmp
         php_admin_value session.save_path %home%/%user%/tmp
+        Action phpcgi-script /cgi-bin/php56
         <Files *.php>
-          SetHandler fcgid-script
+            SetHandler phpcgi-script
         </Files>
-        FCGIWrapper %home%/%user%/web/%domain%/cgi-bin/fcgi56-starter .php
     </Directory>
     <Directory %home%/%user%/web/%domain%/stats>
         AllowOverride All
     </Directory>
-    php_admin_value open_basedir none
     SSLEngine on
     SSLVerifyClient none
     SSLCertificateFile %ssl_crt%
