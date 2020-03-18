@@ -3,7 +3,7 @@
     ServerName %domain_idn%
     %alias_string%
     ServerAdmin %email%
-    DocumentRoot %docroot%/web_root/
+    DocumentRoot %docroot%/web_root
     ScriptAlias /cgi-bin/ %home%/%user%/web/%domain%/cgi-bin/
     Alias /vstats/ %home%/%user%/web/%domain%/stats/
     Alias /error/ %home%/%user%/web/%domain%/document_errors/
@@ -17,10 +17,10 @@
         php_admin_value open_basedir %docroot%:%home%/%user%/tmp
         php_admin_value upload_tmp_dir %home%/%user%/tmp
         php_admin_value session.save_path %home%/%user%/tmp
+        Action phpcgi-script /cgi-bin/php72
         <Files *.php>
-          SetHandler fcgid-script
+            SetHandler phpcgi-script
         </Files>
-        FCGIWrapper %home%/%user%/web/%domain%/cgi-bin/fcgi56-starter .php
     </Directory>
     <Directory %home%/%user%/web/%domain%/stats>
         AllowOverride All
