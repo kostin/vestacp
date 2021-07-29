@@ -1,7 +1,8 @@
 server {
-    listen      %ip%:%proxy_port%;
+    listen	%ip%:%proxy_port%;
     server_name %domain_idn% %alias_idn%;
-    return 301 https://%domain_idn%$request_uri;
-    
-    include %home%/%user%/conf/web/nginx.%domain%.conf*;
+    location / {
+        rewrite ^(.*) https://%domain_idn%$1 permanent;
+    }
+    include %home%/%user%/conf/web/*nginx.%domain_idn%.conf_letsencrypt;
 }
