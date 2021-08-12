@@ -4,30 +4,32 @@ DIR="$1"
 
 if [ ! -d "${DIR}" ]
 then
- echo "Please put site web root dir in parametr"
+ echo "Please put site public_html dir in param without trail slash"
  exit 0
 fi
 
 
-if [ -d "${DIR}/sites/default/files/" ]
+if [ -d "${DIR}/web_root/sites/default/files/" ]
 then
   echo "Detected Drupal site!"
   find ${DIR} -type f -exec chmod 644 {} \;
   find ${DIR} -type d -exec chmod 755 {} \;
-  find ${DIR}/sites/default/files/ -type d -exec chmod 777 {} \;
-  find ${DIR}/sites/default/files/ -type f -exec chmod 666 {} \;
+  find ${DIR}/web_root/sites/default/files/ -type d -exec chmod 777 {} \;
+  find ${DIR}/web_root/sites/default/files/ -type f -exec chmod 666 {} \;
   chown -R root:root ${DIR}/*
+  find ${DIR} -type f -iname '.htaccess' -exec chmod 0644 {} \;
   exit 0
 fi
 
-if [ -d "${DIR}/wp-content/uploads/" ]
+if [ -d "${DIR}/web_root/wp-content/uploads/" ]
 then
   echo "Detected Wordpress site!"
   find ${DIR} -type f -exec chmod 644 {} \;
   find ${DIR} -type d -exec chmod 755 {} \;
-  find ${DIR}/wp-content/uploads/ -type d -exec chmod 777 {} \;
-  find ${DIR}/wp-content/uploads/ -type f -exec chmod 666 {} \;
-  chown -R root ${DIR}/*
+  find ${DIR}/web_root/wp-content/uploads/ -type d -exec chmod 777 {} \;
+  find ${DIR}/web_root/wp-content/uploads/ -type f -exec chmod 666 {} \;
+  chown -R root:root ${DIR}/*
+  find ${DIR} -type f -iname '.htaccess' -exec chmod 0644 {} \;
   exit 0
 fi
 
