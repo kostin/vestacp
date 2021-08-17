@@ -1,5 +1,6 @@
 # vestacpim
 
+```
 rm -rf /opt/scripts
 mkdir -p /opt/scripts
 
@@ -12,3 +13,4 @@ yes | cp -aRf /opt/scripts/vestacpim/php-mod/* /usr/local/vesta/data/templates/w
 yes | cp -aRf /opt/scripts/vestacpim/nginx/* /usr/local/vesta/data/templates/web/nginx/
 
 chmod 751 /usr/local/vesta/data/templates/web/httpd/*.sh
+```
