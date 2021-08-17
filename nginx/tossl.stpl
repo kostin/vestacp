@@ -37,8 +37,6 @@ server {
         alias   %home%/%user%/web/%domain%/document_errors/;
     }
     
-    include %home%/%user%/conf/web/%domain_idn%.nginx.ssl.conf_locations;    
-
     location @fallback {
         proxy_pass      https://%ip%:%web_ssl_port%;
     }
