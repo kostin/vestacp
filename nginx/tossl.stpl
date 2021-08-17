@@ -40,6 +40,8 @@ server {
     location @fallback {
         proxy_pass      https://%ip%:%web_ssl_port%;
     }
+    
+    include %home%/%user%/conf/web/%domain_idn%.nginx.ssl.conf_locations;
 
     location ~ /\.ht    {return 404;}
     location ~ /\.svn/  {return 404;}
