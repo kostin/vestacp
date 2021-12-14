@@ -9,7 +9,7 @@ server {
 
 server {
     listen      %ip%:%proxy_port%;
-    server_name api.stroydobro.ru;
+    server_name api.stroydobro.ru infobox.stroydobro.ru;
     error_log  /var/log/httpd/domains/%domain%.error.log error;
 
     location / {
@@ -26,6 +26,11 @@ server {
     location /error/ {
         alias   %home%/%user%/web/%domain%/document_errors/;
     }
+    
+    location = /robots.txt {
+        add_header Content-Type text/plain;
+        return 200 "User-agent: *\nDisallow: /\n";
+    }    
 
     location @fallback {
         proxy_pass      http://%ip%:%web_port%;
